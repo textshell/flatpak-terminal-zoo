@@ -1,0 +1,36 @@
+
+{
+    "app-id": "de.uchuujin.fp.termzoo.vte0_50_0",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "3.30",
+    "sdk": "org.gnome.Sdk",
+    "command": "vte-2.91",
+    "finish-args": ["--socket=x11", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
+    "modules": [
+        {
+            "name": "vte",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/core/3.26/3.26.0/sources/vte-0.50.0.tar.xz",
+                    "sha512": "ac05622ecf92115cf6aef1ef7805b0ef19856d65d2dfc9792b149443aeee4c9bbfb871c600c9be8b0f4baac4a143e70412208d0a510cb53f13b2caf2caa33587"
+                }
+            ]
+        },
+        {
+            "name": "scripts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D run-in-host /app/bin/run-in-host"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "../run-in-host"
+                }
+            ]
+        }
+
+    ]
+}

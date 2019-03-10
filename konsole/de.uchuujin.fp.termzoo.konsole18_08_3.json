@@ -1,0 +1,36 @@
+
+{
+    "app-id": "de.uchuujin.fp.termzoo.konsole18_08_3",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "5.12",
+    "sdk": "org.kde.Sdk",
+    "command": "konsole",
+    "finish-args": ["--socket=x11", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
+    "modules": [
+        {
+            "name": "konsole",
+            "buildsystem": "cmake",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.kde.org/stable/applications/18.08.3/src/konsole-18.08.3.tar.xz",
+                    "sha512": "3dcc5111e7a7fa389dda862b4a895379ffdb7a39d6568b3b958bf36631e3b3424a6abf2b9166f8567fcdf2d2d6f305a2e13f7575ce63549b0ebb4ebc27b33a82"
+                }
+            ]
+        },
+        {
+            "name": "scripts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D run-in-host /app/bin/run-in-host"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "../run-in-host"
+                }
+            ]
+        }
+
+    ]
+}

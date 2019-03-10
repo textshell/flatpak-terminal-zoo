@@ -1,0 +1,57 @@
+
+{
+    "app-id": "de.uchuujin.fp.termzoo.urxvt9_17",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "18.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "urxvt",
+    "finish-args": ["--socket=x11", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
+    "modules": [
+        {
+            "name": "xmu",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.x.org/releases/individual/lib/libXmu-1.1.2.tar.bz2",
+                    "sha512": "eba4e3d10f7d75ba8464881fb69f295a89774a4b37793197d75f3312e3a342b2df8b7e13e3f5c887962704329b5347ff2f3395e229af9dadf46a93b1e8613cfc"
+                }
+            ]
+        },
+        {
+            "name": "rxvt-unicode",
+            "buildsystem": "simple",
+            "build-commands": [
+                "./configure LDFLAGS='-Wl,--copy-dt-needed-entries -L/app/lib' CPPFLAGS='-fpermissive -I/app/include' --with-res-name=urxvtTZ --with-res-class=URxvtTZ --prefix=/app --enable-256-color --enable-combining --enable-fading --enable-font-styles --enable-iso14755 --enable-keepscrolling --enable-lastlog --enable-mousewheel --enable-next-scroll --enable-pixbuf --enable-pointer-blank --enable-rxvt-scroll --enable-selectionscrolling --enable-slipwheeling --enable-smart-resize --enable-transparency --enable-unicode3 --enable-warnings --enable-xft --enable-xim --enable-xterm-scroll --with-term=rxvt-unicode-256color --disable-perl",
+                "make",
+                "make install"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://dist.schmorp.de/rxvt-unicode/Attic/rxvt-unicode-9.17.tar.bz2",
+                    "sha512": "e7ba2614cf7f8027170a6adfddedd3fc7a63f219a76f92901b49b5a26295d5191200ac7c1dad1f1e7c90225c8fa2dced3022317e8e876425a57d067c3c0d84ee"
+                },
+                {
+                    "type": "patch",
+                    "path": "cpp11-typo-fix.patch"
+                }
+
+            ]
+        },
+        {
+            "name": "scripts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D run-in-host /app/bin/run-in-host"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "../run-in-host"
+                }
+            ]
+        }
+
+    ]
+}

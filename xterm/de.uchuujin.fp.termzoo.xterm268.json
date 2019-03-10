@@ -1,0 +1,63 @@
+
+{
+    "app-id": "de.uchuujin.fp.termzoo.xterm268",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "18.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "xterm.TZ",
+    "finish-args": ["--socket=x11", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
+    "modules": [
+        {
+            "name": "xmu",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.x.org/releases/individual/lib/libXmu-1.1.2.tar.bz2",
+                    "sha512": "eba4e3d10f7d75ba8464881fb69f295a89774a4b37793197d75f3312e3a342b2df8b7e13e3f5c887962704329b5347ff2f3395e229af9dadf46a93b1e8613cfc"
+                }
+            ]
+        },
+        {
+            "name": "xaw",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.x.org/releases/individual/lib/libXaw-1.0.13.tar.bz2",
+                    "sha512": "d768a39f7111802493fa1df1b80d858e4139ceeb883d45ff13ce3b7a0e775a7d2834b7ad157c8330117f04c32f38979795332dd7a119adb2344fcb1aa9cf1e2f"
+                }
+            ]
+        },
+        {
+            "name": "xterm",
+            "buildsystem": "simple",
+            "build-commands": [
+                "./configure --prefix=/app --with-app-class=XTermTZ --program-suffix=.TZ --enable-logging --enable-wide-chars --enable-luit --enable-256-color --disable-imake --enable-narrowproto --enable-exec-xterm --enable-dabbrev --enable-backarrow-is-erase --enable-sixel-graphics --with-utempter LDFLAGS='-Wl,--copy-dt-needed-entries  -L/app/lib' 'CPPFLAGS=-I/app/include -DDEF_ALLOW_FONT=False -DDEF_ALLOW_TCAP=False -DDEF_DISALLOWED_WINDOW=\\\"1,2,3,4,5,6,7,8,9,11,13,14,18,19,20,21,GetSelection,SetSelection,SetWinLines,SetXprop\\\"'",
+                "make",
+                "make install"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "ftp://ftp.invisible-island.net/xterm/xterm-268.tgz",
+                    "sha512": "406376a53afe4013ff3657b2ed4425de2aa5fbd3faec61c1698cd9c70fe72c28a10ba933ac7a5f4819f4882f6d48740c6852f2d07bd62532638239c80bc47385"
+                }
+            ]
+        },
+        {
+            "name": "scripts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D run-in-host /app/bin/run-in-host"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "../run-in-host"
+                }
+            ]
+        }
+
+    ]
+}

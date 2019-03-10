@@ -1,0 +1,61 @@
+
+{
+    "app-id": "de.uchuujin.fp.termzoo.konsole15_08_3",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "5.12",
+    "sdk": "org.kde.Sdk",
+    "command": "wrapper",
+    "finish-args": ["--socket=x11", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
+    "modules": [
+        {
+            "name": "kdelibs4support",
+            "buildsystem": "cmake",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.kde.org/stable/frameworks/5.55/portingAids/kdelibs4support-5.55.0.tar.xz",
+                    "sha512": "f25ad094dd9bdd264f297af4e5e9ef1daccd1c94a0c613540d0fadadc5e615bfd24e2f3ca307d132cc3b6be396b9588f44a4d0b90bb5f884b72d857d4d3bf20e"
+                }
+            ]
+        },
+        {
+            "name": "konsole",
+            "buildsystem": "cmake",
+            "config-opts": ["-DBUILD_TESTING=0"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.kde.org/Attic/applications/15.08.3/src/konsole-15.08.3.tar.xz",
+                    "sha512": "7e32d239769684884737f7c2f3a9597a1107eccbae0208d7b4f1521a1b9b88fb88759099ec34b37f008f3ca6d4dbb727332915b07910a34f98f518e803694ba8"
+                }
+            ]
+        },
+        {
+            "name": "wrapper",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D wrapper-isolated-dbus /app/bin/wrapper"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "wrapper-isolated-dbus"
+                }
+            ]
+        },        
+        {
+            "name": "scripts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D run-in-host /app/bin/run-in-host"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "../run-in-host"
+                }
+            ]
+        }
+
+    ]
+}

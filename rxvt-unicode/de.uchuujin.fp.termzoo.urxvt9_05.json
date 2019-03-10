@@ -1,0 +1,52 @@
+
+{
+    "app-id": "de.uchuujin.fp.termzoo.urxvt9_05",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "18.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "urxvt",
+    "finish-args": ["--socket=x11", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
+    "modules": [
+        {
+            "name": "xmu",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.x.org/releases/individual/lib/libXmu-1.1.2.tar.bz2",
+                    "sha512": "eba4e3d10f7d75ba8464881fb69f295a89774a4b37793197d75f3312e3a342b2df8b7e13e3f5c887962704329b5347ff2f3395e229af9dadf46a93b1e8613cfc"
+                }
+            ]
+        },
+        {
+            "name": "rxvt-unicode",
+            "buildsystem": "simple",
+            "build-commands": [
+                "./configure LDFLAGS='-Wl,--copy-dt-needed-entries -L/app/lib' CPPFLAGS='-fpermissive -I/app/include' --with-res-name=urxvtTZ --with-res-class=URxvtTZ --prefix=/app --enable-256-color --enable-combining --enable-fading --enable-font-styles --enable-iso14755 --enable-keepscrolling --enable-lastlog --enable-mousewheel --enable-next-scroll --enable-pixbuf --enable-pointer-blank --enable-rxvt-scroll --enable-selectionscrolling --enable-slipwheeling --enable-smart-resize --enable-transparency --enable-unicode3 --enable-warnings --enable-xft --enable-xim --enable-xterm-scroll --with-term=rxvt-unicode-256color --disable-perl",
+                "make",
+                "make install"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://dist.schmorp.de/rxvt-unicode/Attic/rxvt-unicode-9.05.tar.bz2",
+                    "sha512": "37169a0f28fec20c268fc92c5c588cc8457b048e1fa5e663475f3d4ef9be631f61967fe1a269f233af69e147cbf9b613105804638fec902c604811fcff07ab5e"
+                }
+            ]
+        },
+        {
+            "name": "scripts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D run-in-host /app/bin/run-in-host"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "../run-in-host"
+                }
+            ]
+        }
+
+    ]
+}
