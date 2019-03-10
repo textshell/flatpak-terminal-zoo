@@ -1,0 +1,12 @@
+diff -ur old/libptytty/src/estl.h new/libptytty/src/estl.h
+--- old/libptytty/src/estl.h    2019-03-10 15:40:24.011843708 +0100
++++ new/libptytty/src/estl.h    2019-03-10 15:41:42.088540360 +0100
+@@ -67,7 +67,7 @@
+   {
+     #if __cplusplus >= 201103L
+       return std::is_trivially_assignable<T, T>::value
+-          && std::is_trivially_constructable<T>::value
++          && std::is_trivially_constructible<T>::value
+           && std::is_trivially_copyable<T>::value
+           && std::is_trivially_destructible<T>::value;
+     #elif ECB_GCC_VERSION(4,4)

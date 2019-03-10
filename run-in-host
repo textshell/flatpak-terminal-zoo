@@ -1,0 +1,11 @@
+#! /bin/bash
+
+if [ -n "$SAVED_DBUS_SESSION_BUS_ADDRESS" ] ; then
+    export DBUS_SESSION_BUS_ADDRESS="$SAVED_DBUS_SESSION_BUS_ADDRESS"
+fi
+
+if [ -z "$1" ] ; then
+    flatpak-spawn --env="TERM=$TERM" --host script -q /dev/null
+else
+    flatpak-spawn --env="TERM=$TERM" --host script -q /dev/null -c "$*"
+fi

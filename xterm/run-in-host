@@ -1,0 +1,7 @@
+#! /bin/bash
+
+if [ -z "$1" ] ; then
+    flatpak-spawn --env="TERM=$TERM" --host script -q /dev/null
+else
+    flatpak-spawn --env="TERM=$TERM" --host script -q /dev/null -c "$*"
+fi
