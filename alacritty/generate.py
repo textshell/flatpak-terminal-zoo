@@ -12,6 +12,28 @@ ALACRITTY_TEMPLATE = Template(r"""
     "finish-args": [ "--socket=x11", "--socket=wayland", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
     "modules": [
         {
+            "name": "xmu",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.x.org/releases/individual/lib/libXmu-1.1.2.tar.bz2",
+                    "sha512": "eba4e3d10f7d75ba8464881fb69f295a89774a4b37793197d75f3312e3a342b2df8b7e13e3f5c887962704329b5347ff2f3395e229af9dadf46a93b1e8613cfc"
+                }
+            ]
+        },
+        {
+            "name": "xclip",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/astrand/xclip/archive/0.13.tar.gz",
+                    "sha512": "191a86194a1503a47c6641a55855dc4aaa8c2c99d2e6f1d46e727feec85a6639041f37ec2265c05c178c0c7d791d3e88bde89223f879effa878812f078485ed2"
+                }
+            ]
+        },
+        {
             "name": "alacritty",
             "buildsystem": "simple",
             "build-commands": [
