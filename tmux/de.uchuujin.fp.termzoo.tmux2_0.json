@@ -1,0 +1,51 @@
+
+{
+    "app-id": "de.uchuujin.fp.termzoo.tmux2_0",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "18.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "tmux",
+    "finish-args": ["--socket=x11", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
+    "modules": [
+        {
+            "name": "libevent",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/libevent/libevent/releases/download/release-2.1.8-stable/libevent-2.1.8-stable.tar.gz",
+                    "sha512": "a2fd3dd111e73634e4aeb1b29d06e420b15c024d7b47778883b5f8a4ff320b5057a8164c6d50b53bd196c79d572ce2639fe6265e03a93304b09c22b41e4c2a17"
+                }
+            ]
+        },
+        {
+            "name": "tmux",
+            "buildsystem": "autotools",
+            "build-options": {
+                "ldflags": "-Wl,--copy-dt-needed-entries -L/app/lib"
+            },
+            "make-install-args": ["PREFIX=/app", "INSTALLBIN= install -m 755", "INSTALLMAN= install -m 444"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/tmux/tmux/releases/download/2.0/tmux-2.0.tar.gz",
+                    "sha512": "8a4be40ceb9b371a91107173de08348c4379b103454fa397ee326506f78a5fda1034dc7148c090c687221eddb8a2fc0c3aeb85da57841df6bcd74fb5f4f5f53d"
+                }
+            ]
+        },
+        {
+            "name": "scripts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D run-in-host /app/bin/run-in-host"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "../run-in-host"
+                }
+            ]
+
+        }
+    ]
+}
