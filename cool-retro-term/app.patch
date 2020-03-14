@@ -1,0 +1,38 @@
+diff --git a/app/app.pro b/app/app.pro
+index 39bd4ec..e5e7dd1 100644
+--- a/app/app.pro
++++ b/app/app.pro
+@@ -19,7 +19,7 @@ RESOURCES += qml/resources.qrc
+ ##              INTALLS
+ #########################################
+ 
+-target.path += /usr/bin/
++target.path += /app/bin/
+ 
+ INSTALLS += target
+ 
+diff --git a/cool-retro-term.pro b/cool-retro-term.pro
+index 851f0b4..9fc8027 100644
+--- a/cool-retro-term.pro
++++ b/cool-retro-term.pro
+@@ -6,6 +6,6 @@ SUBDIRS += qmltermwidget
+ SUBDIRS += app
+ 
+ desktop.files += cool-retro-term.desktop
+-desktop.path += /usr/share/applications
++desktop.path += /app/share/applications
+ 
+ INSTALLS += desktop
+diff --git a/qmltermwidget/qmltermwidget.pro b/qmltermwidget/qmltermwidget.pro
+index 128cb30..d12efc4 100644
+--- a/qmltermwidget/qmltermwidget.pro
++++ b/qmltermwidget/qmltermwidget.pro
+@@ -35,7 +35,7 @@ QMAKE_POST_LINK = $(COPY_DIR) $$PWD/lib/color-schemes $$DESTDIR && \
+ ## INTALLS
+ #########################################
+ 
+-INSTALL_DIR = $$[QT_INSTALL_QML]
++INSTALL_DIR = /app/lib/qml/
+ PLUGIN_IMPORT_PATH = QMLTermWidget
+ PLUGIN_ASSETS = $$PWD/src/QMLTermScrollbar.qml \
+                 $$PWD/lib/kb-layouts \

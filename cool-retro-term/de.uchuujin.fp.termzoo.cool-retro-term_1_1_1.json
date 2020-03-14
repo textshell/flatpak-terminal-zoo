@@ -1,0 +1,41 @@
+
+{
+    "app-id": "de.uchuujin.fp.termzoo.cool-retro-term_1_1_1",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "5.12",
+    "sdk": "org.kde.Sdk",
+    "command": "cool-retro-term",
+    "finish-args": ["--socket=x11", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
+    "modules": [
+        {
+            "name": "cool-retro-term",
+            "buildsystem": "qmake",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/Swordfish90/cool-retro-term",
+                    "tag": "1.1.1",
+                    "commit": "cdd1488e133a98318d2ace9e148d3aef936c107f"
+                },
+                {
+                    "type": "patch",
+                    "path": "app.patch"
+                }
+            ]
+        },
+        {
+            "name": "scripts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D run-in-host /app/bin/run-in-host"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "../run-in-host"
+                }
+            ]
+        }
+
+    ]
+}

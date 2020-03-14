@@ -1,0 +1,60 @@
+
+{
+    "app-id": "de.uchuujin.fp.termzoo.qterminal0_14_1",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "5.12",
+    "sdk": "org.kde.Sdk",
+    "command": "qterminal",
+    "finish-args": ["--socket=x11", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
+    "modules": [
+        {
+            "name": "lxqt-build-tools",
+            "buildsystem": "cmake",
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/lxqt/lxqt-build-tools/releases/download/0.6.0/lxqt-build-tools-0.6.0.tar.xz",
+                    "sha512": "f95c47d40f26defa8bc4e13a0449428945c282cb5e2201610e9529bfd5154a438ee9dcc4f556bd76efe13b97533bbed2f49ab5c100225907781093094a692227"
+                }
+            ]
+        },
+        {
+            "name": "qtermwidget",
+            "buildsystem": "cmake",
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/lxqt/qtermwidget/releases/download/0.14.1/qtermwidget-0.14.1.tar.xz",
+                    "sha512": "6b6d4abd6fc21f10f5323321f26132c0ff5b9682d09a086e265e57976deb60fca8db9a9906a29a0ed8d0e7b83417d5852df55d0118936d5f7a1342a9c2cb6410"
+                }
+            ]
+        },
+        {
+            "name": "qterminal",
+            "buildsystem": "qmake",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/lxqt/qterminal/releases/download/0.14.1/qterminal-0.14.1.tar.xz",
+                    "sha512": "bb9ac6519236bb834892c1be50bc27f86631b2c7ed60c1ddd4300fedd48f3ea8a08aa453fa03199693486159f667f9391af9491dea5402b4f807ee91e8a6e5cf"
+                }
+            ]
+        },
+        {
+            "name": "scripts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D run-in-host /app/bin/run-in-host"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "../run-in-host"
+                }
+            ]
+        }
+
+    ]
+}
