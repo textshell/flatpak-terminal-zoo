@@ -6,7 +6,7 @@ KITTY_TEMPLATE = Template(r"""
 {
     "app-id": "de.uchuujin.fp.termzoo.kitty${kitty_version_b}",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "3.35",
+    "runtime-version": "3.36",
     "sdk": "org.gnome.Sdk",
     "command": "kitty",
     "finish-args": [ "--socket=x11", "--socket=wayland", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
@@ -53,6 +53,9 @@ kitty_versions = (
     ('0.14.4', '1550883232bff21217fc0d294598d6d828e67a944fc69b324079e87bf2505344c58ade75cec8bff1dca7821c4f490c066f2645281cee0e71792d317ef7df3779'),
     ('0.14.5', '9c433ac3b606dcfbf85ddb17e8e13846e99daf5904aa85ae70599e9a09aa09a67caf5a95a2584ef25dcc0bb7ab16b50541cce72e5ddd12b60f1e02fd96b97477'),
     ('0.14.6', '889bfce732f2a36d338c9c41b28e0770d98c15530b56a9f037cef610593b50453f1bde60e89560472035fc250dec0431a9776de1449f77e4c6988aca157eea12'),
+    ('0.15.0', '4e546fb9ad0cf34df8aa5ef3787224e8dd820fadb474faddc5f47b987bbc46fb62350a64bcacbdccd7e7cd287df22045ed742b89f613e402f033dc8bb73d8688'),
+    ('0.15.1', 'e32fe719b4fc7c45b324e4372e0dca3e482f81b245b8bf4eb2b643dccc8541a8d1f93b0f73d5777a7b51cd62a720468036bcb848797e0cba2dad71bba005f9e1'),
+    ('0.16.0', '24dedfc58c5d33aa18da85f904952129f39cd54afb70282c7572b57514b1deebfb532414913e0efc3a5c0352a81406cd7ddef99490dbd9186dc61eab7af3975b'),
 )
 
 

@@ -1,6 +1,6 @@
 
 {
-    "app-id": "de.uchuujin.fp.termzoo.kitty0_14_4",
+    "app-id": "de.uchuujin.fp.termzoo.kitty0_16_0",
     "runtime": "org.gnome.Platform",
     "runtime-version": "3.36",
     "sdk": "org.gnome.Sdk",
@@ -17,8 +17,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/kovidgoyal/kitty/releases/download/v0.14.4/kitty-0.14.4.tar.xz",
-                    "sha512": "1550883232bff21217fc0d294598d6d828e67a944fc69b324079e87bf2505344c58ade75cec8bff1dca7821c4f490c066f2645281cee0e71792d317ef7df3779"
+                    "url": "https://github.com/kovidgoyal/kitty/releases/download/v0.16.0/kitty-0.16.0.tar.xz",
+                    "sha512": "24dedfc58c5d33aa18da85f904952129f39cd54afb70282c7572b57514b1deebfb532414913e0efc3a5c0352a81406cd7ddef99490dbd9186dc61eab7af3975b"
                 }
             ]
         },

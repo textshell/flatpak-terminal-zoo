@@ -1,0 +1,39 @@
+
+{
+    "app-id": "de.uchuujin.fp.termzoo.vte0_60_0",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "3.36",
+    "sdk": "org.gnome.Sdk",
+    "command": "vte-2.91",
+    "build-options" : {
+        "cxxflags": "-fno-exceptions"
+    },
+    "finish-args": ["--socket=x11", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
+    "modules": [
+        {
+            "name": "vte",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/core/3.36/3.36.0/sources/vte-0.60.0.tar.xz",
+                    "sha512": "8c1a80ba90fa1c1f4b5ec1a1d3793af79c04fbbad4acecba094db79771555b1689017864bd81bee4366f9ef363f629f20731bac998d994b9bfa37ee59e9e58b0"
+                }
+            ]
+        },
+        {
+            "name": "scripts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D run-in-host /app/bin/run-in-host"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "../run-in-host"
+                }
+            ]
+        }
+
+    ]
+}

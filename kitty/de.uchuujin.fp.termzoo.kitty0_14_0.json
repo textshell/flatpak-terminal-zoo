@@ -2,7 +2,7 @@
 {
     "app-id": "de.uchuujin.fp.termzoo.kitty0_14_0",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "3.30",
+    "runtime-version": "3.36",
     "sdk": "org.gnome.Sdk",
     "command": "kitty",
     "finish-args": [ "--socket=x11", "--socket=wayland", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],

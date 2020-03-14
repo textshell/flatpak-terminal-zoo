@@ -40,6 +40,47 @@ VTE_TEMPLATE = Template(r"""
 }
 """)
 
+VTE_MESON_TEMPLATE = Template(r"""
+{
+    "app-id": "de.uchuujin.fp.termzoo.vte${vte_version_b}",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "${vte_runtime}",
+    "sdk": "org.gnome.Sdk",
+    "command": "vte${vte_api}",
+    "build-options" : {
+        "cxxflags": "-fno-exceptions"
+    },
+    "finish-args": ["--socket=x11", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
+    "modules": [
+        {
+            "name": "vte",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/core/${vte_file}",
+                    "sha512": "${vte_sha}"
+                }
+            ]
+        },
+        {
+            "name": "scripts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D run-in-host /app/bin/run-in-host"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "../run-in-host"
+                }
+            ]
+        }
+
+    ]
+}
+""")
+
 
 vte_versions = (
     ('0.28.0', '', '3.0/3.0.0/sources/vte-0.28.0.tar.bz2', '5f9549ee09dd1d100bf0e90f81b12e8237ba4cedd79cf2fc33edb81edb5796ff23a88563a12ae808cdc057ae2ef508999426b36a4985fef6dc008431f1aa38f0'),
@@ -93,16 +134,21 @@ vte_versions = (
     ('0.58.0', '-2.91', '3.34/3.34.0/sources/vte-0.58.0.tar.xz', '4d0fc725e0c71921b3d235d434600ad3c0807d5c0e7bd62fb782d857254db334bb851b75382c9613a5af753b5d6a1c05b174731427a8560b9b14101b3cc38c06'),
     ('0.58.1', '-2.91', '3.34/3.34.1/sources/vte-0.58.1.tar.xz', '1f795731fbb7ee76c4274562d5a55668c3b8ecad5a00ff83c762b0a2517ccffb85e796e937407d46e6bdb64327759eabc5878455d1d66cb1b8ff8b6060a4b1b7'),
     ('0.59.9', '-2.91', '3.35/3.35.1/sources/vte-0.59.0.tar.xz', '533d1e87a699137a33a6ddb82bf0f010925ba578974e1f6c87bae0b497309dd84c3cb2f5f6884f34f7fbcfad94fbaa07eb3a80387ee9f16b5f3f0ea2679e7376'),
+    ('0.60.0', '-2.91', '3.36/3.36.0/sources/vte-0.60.0.tar.xz', '8c1a80ba90fa1c1f4b5ec1a1d3793af79c04fbbad4acecba094db79771555b1689017864bd81bee4366f9ef363f629f20731bac998d994b9bfa37ee59e9e58b0'),
 )
 
 
 for vte_version, vte_api, vte_file, vte_sha in vte_versions:
     vte_version_b = vte_version.replace('.', '_')
-    vte_runtime = '3.30'
-    if vte_api == '':
-        vte_runtime = '3.28'
     with open('de.uchuujin.fp.termzoo.vte{}.json'.format(vte_version_b), "w") as f:
-        f.write(VTE_TEMPLATE.substitute(vte_version=vte_version, vte_api=vte_api, vte_runtime=vte_runtime,
-                  vte_version_b=vte_version_b, vte_file=vte_file, vte_sha=vte_sha))
-
+        if vte_version[:3] in ('0.2', '0.3', '0.4', '0.5'):
+            vte_runtime = '3.30'
+            if vte_api == '':
+                vte_runtime = '3.28'
+            f.write(VTE_TEMPLATE.substitute(vte_version=vte_version, vte_api=vte_api, vte_runtime=vte_runtime,
+                      vte_version_b=vte_version_b, vte_file=vte_file, vte_sha=vte_sha))
+        else:
+            vte_runtime = '3.36'
+            f.write(VTE_MESON_TEMPLATE.substitute(vte_version=vte_version, vte_api=vte_api, vte_runtime=vte_runtime,
+                      vte_version_b=vte_version_b, vte_file=vte_file, vte_sha=vte_sha))
 
