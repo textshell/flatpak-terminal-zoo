@@ -2,14 +2,17 @@
 {
     "app-id": "de.uchuujin.fp.termzoo.vte0_58_1",
     "runtime": "org.gnome.Platform",
-    "runtime-version": "3.30",
+    "runtime-version": "3.36",
     "sdk": "org.gnome.Sdk",
     "command": "vte-2.91",
+    "build-options" : {
+        "cxxflags": "-fno-exceptions"
+    },
     "finish-args": ["--socket=x11", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
     "modules": [
         {
             "name": "vte",
-            "buildsystem": "autotools",
+            "buildsystem": "meson",
             "sources": [
                 {
                     "type": "archive",

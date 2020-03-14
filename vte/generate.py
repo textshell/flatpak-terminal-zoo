@@ -141,7 +141,7 @@ vte_versions = (
 for vte_version, vte_api, vte_file, vte_sha in vte_versions:
     vte_version_b = vte_version.replace('.', '_')
     with open('de.uchuujin.fp.termzoo.vte{}.json'.format(vte_version_b), "w") as f:
-        if vte_version[:3] in ('0.2', '0.3', '0.4', '0.5'):
+        if vte_version[:3] in ('0.2', '0.3', '0.4', '0.5') and not vte_version in ('0.57.0', '0.57.3', '0.58.0', '0.58.1', '0.59.9'):
             vte_runtime = '3.30'
             if vte_api == '':
                 vte_runtime = '3.28'
