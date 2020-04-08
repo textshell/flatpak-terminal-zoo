@@ -1,1 +1,5 @@
 .flatpak-builder
+*.tar*
+tmp
+builddir
+*.log
