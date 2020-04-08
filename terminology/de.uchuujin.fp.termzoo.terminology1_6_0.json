@@ -1,0 +1,66 @@
+
+{
+    "app-id": "de.uchuujin.fp.termzoo.terminology1_6_0",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "3.36",
+    "sdk": "org.gnome.Sdk",
+    "command": "terminology",
+    "finish-args": ["--socket=x11", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
+    "modules": [
+        {
+            "name": "lua",
+            "buildsystem": "simple",
+            "build-commands": [
+                "make PREFIX=/app install"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://luajit.org/download/LuaJIT-2.0.4.tar.gz",
+                    "sha512": "a72957bd85d8f457269e78bf08c19b28c5707df5d19920d61918f8a6913f55913ce13037fb9a6463c04cefde0c6644739f390e09d656e4bbc2c236927aa3f8f9"
+                }
+            ]
+        },
+        {
+            "name": "efl",
+            "buildsystem": "meson",
+            "config-opts": ["-Davahi=false", "-Dphysics=false", "-Devas-loaders-disabler=gst,pdf,ps,raw,rsvg,xcf,dds,generic,ico,jp2k,pmaps,psd,tga,tgv,tiff,wbmp,webp,json", "-Dbuild-tests=false", "-Dbuild-examples=false", "-Dsystemd=false"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.enlightenment.org/rel/libs/efl/efl-1.23.3.tar.xz",
+                    "sha512": "47ad067c43d39b534834195f89a745c4a47d867f33aaa68c28c6dccd147379e9bc2416bd68878cc16585f8cb60e926a7df62102658b205756c01985f37f0d297"
+                },
+                {
+                    "type": "patch",
+                    "path": "efl-dbus.patch"
+                }
+            ]
+        },
+        {
+            "name": "terminology",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.enlightenment.org/rel/apps/terminology/terminology-1.6.0.tar.xz",
+                    "sha512": "ef95a5d128736a2e6b3b9e48a3f32a8e3a1f19ccabcb9fa429ed777ee201ba16fa431a61edafaebc018567f4a3657d81551407cf0449f58b416aa1e6077afec1"
+                }
+            ]
+        },
+        {
+            "name": "scripts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D run-in-host /app/bin/run-in-host"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "../run-in-host"
+                }
+            ]
+        }
+
+    ]
+}

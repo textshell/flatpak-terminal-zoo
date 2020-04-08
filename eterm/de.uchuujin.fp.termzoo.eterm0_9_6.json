@@ -1,0 +1,57 @@
+{
+    "app-id": "de.uchuujin.fp.termzoo.eterm0_9_6",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "3.36",
+    "sdk": "org.gnome.Sdk",
+    "command": "Eterm",
+    "finish-args": ["--socket=x11", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
+    "modules": [
+        {
+            "name": "imlib2",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://downloads.sourceforge.net/enlightenment/imlib2-1.6.1.tar.bz2",
+                    "sha512": "ecdbdbfe8767ec2b1f22ce664cbab5e1d3f75be7a3c8f37488f5243b3c31dbc433414b8d50d2d1b70c67a80e31e42cc5398161991ce3955e991c114c82ddd58f"
+                }
+            ]
+        },
+        {
+            "name": "libast",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://www.eterm.org/download/libast-0.7.tar.gz",
+                    "sha512": "0af1d508af88ce0a2f29fe7841e23759be7c6540a1e2698980c289245ba284fdbf76c593e457c0cd6cfc54dcb6d891b01a3fd4d4a6ecc511fb2de698c9a3046d"
+                }
+            ]
+        },
+        {
+            "name": "eterm",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://www.eterm.org/download/Eterm-0.9.6.tar.gz",
+                    "sha512": "07ef5587b7c8444d49ffd6f20f09c98bd248ccee9b3de311f5705961579f707c4a8e2b69a2193500b75cc1e4bdeabb711a1dd23637d6b94433508d8a93d377fe"
+                }
+            ]
+        },
+        {
+            "name": "scripts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D run-in-host /app/bin/run-in-host"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "../run-in-host"
+                }
+            ]
+        }
+
+    ]
+}

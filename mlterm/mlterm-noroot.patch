@@ -1,0 +1,12 @@
+diff -ru mlterm-3.8.9.orig/main/Makefile.in mlterm-3.8.9/main/Makefile.in
+--- mlterm-3.8.9.orig/main/Makefile.in	2019-11-22 17:32:07.000000000 +0100
++++ mlterm-3.8.9/main/Makefile.in	2020-04-07 23:55:56.000000000 +0200
+@@ -80,7 +80,7 @@
+ PROG_sdl2 = mlterm-sdl2
+ PROG2_console = mlterm-con
+ 
+-INSTALL_OPT = @INSTALL_OPT@
++INSTALL_OPT =
+ 
+ LIBTOOL_CC = $(LIBTOOL) --mode=compile $(CC) $(CFLAGS) $(CFLAGS_FOR_FEATURES)
+ LIBTOOL_LINK = $(LIBTOOL) --mode=link $(CC) @LDFLAGS@

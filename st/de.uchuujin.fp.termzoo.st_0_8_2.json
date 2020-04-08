@@ -1,0 +1,39 @@
+
+{
+    "app-id": "de.uchuujin.fp.termzoo.st_0_8_2",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "3.36",
+    "sdk": "org.gnome.Sdk",
+    "command": "st",
+    "finish-args": ["--socket=x11", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
+    "modules": [
+        {
+            "name": "pterm",
+            "buildsystem": "simple",
+            "build-commands": [
+                "make PREFIX=/app CC=cc install"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://dl.suckless.org/st/st-0.8.2.tar.gz",
+                    "sha512": "eaaf5f2fe050ee768d16a9c8c295ba13315775b3a8a3201e020237a3dd217bfb811832d58477249000596289a6cb3287fbb39d6327fc90986af1c363e4b5bf8d"
+                }
+            ]
+        },
+        {
+            "name": "scripts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D run-in-host /app/bin/run-in-host"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "../run-in-host"
+                }
+            ]
+        }
+
+    ]
+}

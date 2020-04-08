@@ -1,0 +1,9 @@
+--- efl-2/dbus-services/meson.build	2019-11-27 19:27:00.000000000 +0100
++++ efl-1/dbus-services/meson.build	2020-03-15 18:18:26.000000000 +0100
+@@ -14,5 +14,4 @@
+ configure_file(
+   input: 'org.enlightenment.Ethumb.service.in',
+   output: 'org.enlightenment.Ethumb.service',
+-  configuration: org_enlightenment_ethumb_service_config,
+-  install_dir: dep.get_pkgconfig_variable('session_bus_services_dir'))
++  configuration: org_enlightenment_ethumb_service_config)
