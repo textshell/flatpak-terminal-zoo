@@ -1,0 +1,13 @@
+terminal:
+  profile: custom-shell
+  autoOpen: true
+  recoverTabs: false
+  customShell: "/bin/bash"
+appearance:
+  frame: native
+enableAnalytics: false
+enableWelcomeTab: false
+pluginBlacklist:
+  - ssh
+  - serial
+enableAutomaticUpdates: false

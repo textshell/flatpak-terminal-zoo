@@ -1,0 +1,55 @@
+
+{
+    "app-id": "de.uchuujin.fp.termzoo.terminus_xtermjs1_0_104",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "3.34",
+    "sdk": "org.gnome.Platform",
+    "base": "org.electronjs.Electron2.BaseApp",
+    "base-version": "19.08",
+    "command": "terminus",
+    "finish-args": [ "--socket=x11", "--socket=wayland", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
+    "modules": [
+        {
+            "name": "terminus",
+            "buildsystem": "simple",
+            "build-commands": [
+                "sed -i -e 's%/etc/shells%/app/shells%' resources/builtin-plugins/terminus-terminal/dist/index.js",
+                "mkdir -p /app/bin/",
+                "cp config.yaml /app/",
+                "cp -r . /app/bin/",
+                "mv /app/bin/terminus /app/bin/terminus.bin",
+                "cp wrapper.sh /app/bin/terminus",
+                "chmod a+x /app/bin/terminus",
+                "echo /bin/bash > /app/shells"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/Eugeny/terminus/releases/download/v1.0.104/terminus-1.0.104-linux.tar.gz",
+                    "sha512": "6302e67276d8db09d4979003500cf2224811b3870817fcbeee4e8aea9e84d19dbde8165ff5ab6a5a8ca2ac4a0e13fe89f040c5be9f8a4c3fcbf8e8b6189fdb2c"
+                },
+                {
+                    "type": "file",
+                    "path": "wrapper.sh"
+                },
+                {
+                    "type": "file",
+                    "path": "config.yaml"
+                }
+            ]
+        },
+        {
+            "name": "scripts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D run-in-host /app/bin/run-in-host"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "../run-in-host"
+                }
+            ]
+        }
+    ]
+}
