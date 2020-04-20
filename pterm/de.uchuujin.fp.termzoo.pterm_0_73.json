@@ -15,6 +15,10 @@
                     "type": "archive",
                     "url": "https://the.earth.li/~sgtatham/putty/0.73/putty-0.73.tar.gz",
                     "sha512": "4ada4b8c6d68be44afede2676bc661fedfd1ea0b574b8232ad9aaa6f3a48baa9f4f0ded2955b3f2677a14db85a508f53c965cb00fcd7538a1ed9844031f0c5e5"
+                },
+                {
+                    "type": "patch",
+                    "path":  "configure.patch"
                 }
             ]
         },
