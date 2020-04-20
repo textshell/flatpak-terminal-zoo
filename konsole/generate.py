@@ -56,8 +56,8 @@ KONSOLE_OLD_TEMPLATE = Template(r"""
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.kde.org/stable/frameworks/5.55/portingAids/kdelibs4support-5.55.0.tar.xz",
-                    "sha512": "f25ad094dd9bdd264f297af4e5e9ef1daccd1c94a0c613540d0fadadc5e615bfd24e2f3ca307d132cc3b6be396b9588f44a4d0b90bb5f884b72d857d4d3bf20e"
+                    "url": "https://download.kde.org/stable/frameworks/5.65/portingAids/kdelibs4support-5.65.0.tar.xz",
+                    "sha512": "5d41561a28999d460099fc97e69ba76340f9f46e67725dd9a66a5f8fdf5e6395f17908f997ecf84656d3fb7712490772df561a4122da946041f2c85d2053f341"
                 }
             ]
         },
