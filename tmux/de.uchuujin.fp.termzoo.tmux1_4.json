@@ -20,11 +20,11 @@
         },
         {
             "name": "tmux",
-            "buildsystem": "autotools",
-            "build-options": {
-                "ldflags": "-Wl,--copy-dt-needed-entries -L/app/lib"
-            },
-            "make-install-args": ["PREFIX=/app", "INSTALLBIN= install -m 755", "INSTALLMAN= install -m 444"],
+            "buildsystem": "simple",
+            "build-commands": [
+                "if [ -f ./configure ] ; then LIBS=\"-ltinfo\" ./configure --prefix=/app ; fi",
+                "LIBS=\"-ltinfo -lcrypt -lutil\" make install PREFIX=/app \"INSTALLBIN= install -m 755\" \"INSTALLMAN= install -m 444\""
+            ],
             "sources": [
                 {
                     "type": "archive",
