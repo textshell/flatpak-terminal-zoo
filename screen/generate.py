@@ -15,7 +15,9 @@ SCREEN_TEMPLATE = Template(r"""
             "name": "screen",
             "buildsystem": "autotools",
             "build-options": {
-                "ldflags": "-Wl,--copy-dt-needed-entries -L/app/lib"
+                "ldflags": "-Wl,--copy-dt-needed-entries -L/app/lib",
+                "make-args": [ "-j1" ],
+                "env": { "LIBS": "-ltinfo" }
             },
             "sources": [
                 {
