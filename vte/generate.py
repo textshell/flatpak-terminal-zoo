@@ -14,6 +14,10 @@ VTE_TEMPLATE = Template(r"""
         {
             "name": "vte",
             "buildsystem": "autotools",
+            "build-options": {
+                "cxxflags-override": true,
+                "cxxflags": ""
+            },
             "sources": [
                 {
                     "type": "archive",
