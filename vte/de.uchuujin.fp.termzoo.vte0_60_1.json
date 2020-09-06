@@ -1,20 +1,23 @@
 
 {
-    "app-id": "de.uchuujin.fp.termzoo.konsole17_12_3",
-    "runtime": "org.kde.Platform",
-    "runtime-version": "5.12",
-    "sdk": "org.kde.Sdk",
-    "command": "konsole",
+    "app-id": "de.uchuujin.fp.termzoo.vte0_60_1",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "3.36",
+    "sdk": "org.gnome.Sdk",
+    "command": "vte-2.91",
+    "build-options" : {
+        "cxxflags": "-fno-exceptions"
+    },
     "finish-args": ["--socket=x11", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
     "modules": [
         {
-            "name": "konsole",
-            "buildsystem": "cmake",
+            "name": "vte",
+            "buildsystem": "meson",
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.kde.org/Attic/applications/17.12.3/src/konsole-17.12.3.tar.xz",
-                    "sha512": "973c47341ebe729442ba8f8a7523eccaf5da28afbfe236fd4ec2897f710c3967f22ed5cd8f2f997f631a5369625c830f7a4540cdf6953874c2f556f547c413a0"
+                    "url": "https://download.gnome.org/core/3.36/3.36.1/sources/vte-0.60.1.tar.xz",
+                    "sha512": "123a8fcc14f4dba450411f95f43eb60108fee95c328d0e7331c9366d96ba2caa548dece3e95a8b779dda19d322d6879d02abc6ac68e36450e4e72f17a0963c30"
                 }
             ]
         },

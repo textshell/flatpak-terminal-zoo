@@ -1,6 +1,6 @@
 
 {
-    "app-id": "de.uchuujin.fp.termzoo.konsole17_12_3",
+    "app-id": "de.uchuujin.fp.termzoo.konsole20_04_3",
     "runtime": "org.kde.Platform",
     "runtime-version": "5.12",
     "sdk": "org.kde.Sdk",
@@ -13,8 +13,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.kde.org/Attic/applications/17.12.3/src/konsole-17.12.3.tar.xz",
-                    "sha512": "973c47341ebe729442ba8f8a7523eccaf5da28afbfe236fd4ec2897f710c3967f22ed5cd8f2f997f631a5369625c830f7a4540cdf6953874c2f556f547c413a0"
+                    "url": "https://download.kde.org/stable/release-service/20.04.3/src/konsole-20.04.3.tar.xz",
+                    "sha512": "37607f7aab099b48478179eeb7e40e25a75c3c0b1b20496ae34ccd883d6f30644206d7ee95ebd56e9620b88b80700a03157671dfecf538767e6cad476632d813"
                 }
             ]
         },

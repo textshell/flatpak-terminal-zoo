@@ -13,7 +13,7 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.kde.org/stable/applications/18.12.3/src/konsole-18.12.3.tar.xz",
+                    "url": "https://download.kde.org/Attic/applications/18.12.3/src/konsole-18.12.3.tar.xz",
                     "sha512": "9fecd316a9bc7adaca9a3fac38a57d293286b6328e88d96ac1cf8967fcb67ef8e9a5b085e185c4373599eafd0eaa18f0d73df70df16b98a1badd9efb689e1f7c"
                 }
             ]

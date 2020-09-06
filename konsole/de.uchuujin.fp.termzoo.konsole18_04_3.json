@@ -13,7 +13,7 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.kde.org/stable/applications/18.04.3/src/konsole-18.04.3.tar.xz",
+                    "url": "https://download.kde.org/Attic/applications/18.04.3/src/konsole-18.04.3.tar.xz",
                     "sha512": "0809cf4db6e10e672a4a976609045fb88879fe615b48e452f140da0a6c44971f31a7b4606124ed3b7642ee3f3556ace45b31e0b5c466df611fea98a9cf702066"
                 }
             ]

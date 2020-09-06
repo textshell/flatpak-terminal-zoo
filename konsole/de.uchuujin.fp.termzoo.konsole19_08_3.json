@@ -13,7 +13,7 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.kde.org/stable/applications/19.08.3/src/konsole-19.08.3.tar.xz",
+                    "url": "https://download.kde.org/Attic/applications/19.08.3/src/konsole-19.08.3.tar.xz",
                     "sha512": "140a34b8f73786557b71ac5b23b500950c598ef88795e660c7fde3077c9f5d842ae1eed73966eb14dfb54d2833fa63c310fa2cb340a81c30f31fdd77e9f263dc"
                 }
             ]
