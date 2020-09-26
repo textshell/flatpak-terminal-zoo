@@ -7,7 +7,7 @@ import json
 import binascii
 
 list_of_terminals_that_use_dash_c = ['vte']
-list_of_terminals_that_use_xterm = ['screen', 'tmux']
+list_of_terminals_that_use_xterm = ['screen', 'tmux', 'mosh']
 list_of_terminals_that_use_no_dash = ['screen']
 
 if len(sys.argv) == 3 and sys.argv[1] == '+++anyterm+++':
@@ -57,6 +57,10 @@ elif any((term.startswith('de.uchuujin.fp.termzoo.' + x) for x in list_of_termin
     subprocess.check_call(inv_args)
 elif term.startswith('de.uchuujin.fp.termzoo.tmux'):
     inv_args = [*prefix, 'flatpak', 'run', term, 'new-session', 'run-in-host' + ' ' + __file__ + ' +++anyterm+++ ' + encoded]
+    #print(inv_args)
+    subprocess.check_call(inv_args)
+elif term.startswith('de.uchuujin.fp.termzoo.mosh'):
+    inv_args = [*prefix, 'flatpak', 'run', term, '--local', '--', '127.0.0.1', 'run-in-host', __file__, '+++anyterm+++', encoded]
     #print(inv_args)
     subprocess.check_call(inv_args)
 else:
