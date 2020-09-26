@@ -121,6 +121,8 @@ konsole_versions = (
     ('18.08.3', False, 'Attic/applications', '3dcc5111e7a7fa389dda862b4a895379ffdb7a39d6568b3b958bf36631e3b3424a6abf2b9166f8567fcdf2d2d6f305a2e13f7575ce63549b0ebb4ebc27b33a82'),
     ('18.12.3', False, 'Attic/applications', '9fecd316a9bc7adaca9a3fac38a57d293286b6328e88d96ac1cf8967fcb67ef8e9a5b085e185c4373599eafd0eaa18f0d73df70df16b98a1badd9efb689e1f7c'),
     ('19.04.3', False, 'Attic/applications', '20ec8ae12268110f00999b9f1197aff667ee2af7d7c2747b4d142c9db48fceaca7c01ab8f12fbc541cfc79eaebcbd704e166610f263c46083ad9fefb3c5da848'),
+    ('19.08.0', False, 'Attic/applications', '9f1b17c62236fd28615cc083d5d33b2360e8a9c903d4076628018064b3240b012f6bd719fe1697f7d52c68a14f88fcfc6281986e251b62cf2571fbfdc777a412'),
+    ('19.08.1', False, 'Attic/applications', 'e68d51f6307c68f3e0ac2df9f2ab6eedac4984e04154bbc29d67ad6955c6210ebfb659488aac44a797e7e26d4cef0fa0e069e25a1d17a250b73a8cf0aca01696'),
     ('19.08.2', False, 'Attic/applications', 'b781e1e6a19b81a49722fa04d568a53dda2c22f72ee197ebf7bacb9142d260ce3071a12cfada905d029dc2ab43a047205175cde5906a4033fb8bdd20876c1af5'),
     ('19.08.3', False, 'Attic/applications', '140a34b8f73786557b71ac5b23b500950c598ef88795e660c7fde3077c9f5d842ae1eed73966eb14dfb54d2833fa63c310fa2cb340a81c30f31fdd77e9f263dc'),
     ('19.12.0', False, 'Attic/release-service', '3a9bcbc9c07eafe178406d4ea5eab06c24ede5fcb7ad43dc8b0a46776cdd64ce6d2033ea1083f648370cdb50eda4e93ec1cdd76e318a2d7ec44f46b4be75e89d'),
