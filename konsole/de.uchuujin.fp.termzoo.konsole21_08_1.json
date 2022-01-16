@@ -1,8 +1,8 @@
 
 {
-    "app-id": "de.uchuujin.fp.termzoo.konsole20_04_0",
+    "app-id": "de.uchuujin.fp.termzoo.konsole21_08_1",
     "runtime": "org.kde.Platform",
-    "runtime-version": "5.12",
+    "runtime-version": "5.15-21.08",
     "sdk": "org.kde.Sdk",
     "command": "konsole",
     "finish-args": ["--socket=x11", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
@@ -13,8 +13,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.kde.org/Attic/release-service/20.04.0/src/konsole-20.04.0.tar.xz",
-                    "sha512": "eb260752cf62c418349a8a2ee91e5a9a8f0450190f6d8ffe3c6ac4d7131e858e84f0f520c447588f60143564eaac9b5f340d90562fe507ec27846a82d0bc73f4"
+                    "url": "https://download.kde.org/stable/release-service/21.08.1/src/konsole-21.08.1.tar.xz",
+                    "sha512": "ebac48f71bde793e39fc2f3c0dc39f8fc24e6f9ba8447988ee793ef33154bcbc7f97dfe863b708acc85c472e424c4190625fc8139417f4a98520c4c9a903903d"
                 }
             ]
         },

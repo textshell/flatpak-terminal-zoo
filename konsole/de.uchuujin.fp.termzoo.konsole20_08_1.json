@@ -13,7 +13,7 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.kde.org/stable/release-service/20.08.1/src/konsole-20.08.1.tar.xz",
+                    "url": "https://download.kde.org/Attic/release-service/20.08.1/src/konsole-20.08.1.tar.xz",
                     "sha512": "3321b97ee738eee10a7bc7f1085b1180a4cbbad67c587149a9acacd96439b89ec5e463028a44f9b9590308614d2c37acca7b31748e290274021031528ec7b995"
                 }
             ]
