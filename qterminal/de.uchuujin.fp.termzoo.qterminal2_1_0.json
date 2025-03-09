@@ -1,0 +1,79 @@
+
+{
+    "app-id": "de.uchuujin.fp.termzoo.qterminal2_1_0",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "6.8",
+    "sdk": "org.kde.Sdk",
+    "command": "qterminal",
+    "finish-args": ["--socket=x11", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
+    "modules": [
+        {
+            "name": "lxqt-build-tools",
+            "buildsystem": "cmake",
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/lxqt/lxqt-build-tools/releases/download/2.1.0/lxqt-build-tools-2.1.0.tar.xz",
+                    "sha512": "d5c11474125e7285e28d5d148347118d9e7110bbb93c82695c08c7231d2dcc3bc3851076795af64d5d800a2ec39a16a2533e7565c579ec01994bae4f20e3c34e"
+                }
+            ]
+        },
+        {
+            "name": "qtermwidget",
+            "buildsystem": "cmake",
+            "config-opts": [
+                "-DCMAKE_INSTALL_LIBDIR=lib"
+            ],
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/lxqt/qtermwidget/releases/download/2.1.0/qtermwidget-2.1.0.tar.xz",
+                    "sha512": "a3ab6c373f3438765f61f00efbafa3b8d17cc83defb9c5f4e552633e9a3b17e0eb399f3a18732c889c2db8b44e8e7a781c6f144e3a83b9a19f8b038ae4a87ddd"
+                }
+            ]
+        },
+        {
+            "name": "layer-shell",
+            "buildsystem": "cmake",
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.kde.org/stable/plasma/6.3.2/layer-shell-qt-6.3.2.tar.xz",
+                    "sha512": "117ff72ec1399b6b5e5006153f569b637ae965bbeebdb3f73f5ba6bcdd64d5b3c7dc07109a064460ae744b5d7e54d8fdd956c74147c4d065cdc192f2518c8827"
+                }
+            ]
+        },
+        {
+            "name": "qterminal",
+            "buildsystem": "cmake",
+            "config-opts": [
+                "-DCMAKE_INSTALL_LIBDIR=lib"
+            ],
+            "builddir": true,
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/lxqt/qterminal/releases/download/2.1.0/qterminal-2.1.0.tar.xz",
+                    "sha512": "3787bb8269a4b06c8c42d0c1c5e900a85e868e36e415f4ae05bbcb1fde3cbdf88a2ada7a86dd39a4a07305586fcb19e2ab04182bdd9f7f10dbf6cd4fd1194f22"
+                }
+            ]
+        },
+        {
+            "name": "scripts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D run-in-host /app/bin/run-in-host"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "../run-in-host"
+                }
+            ]
+        }
+
+    ]
+}
