@@ -44,7 +44,7 @@ XTERM_TEMPLATE = Template(r"""
             "sources": [
                 {
                     "type": "archive",
-                    "url": "ftp://ftp.invisible-island.net/xterm/xterm-${xterm_version}.tgz",
+                    "url": "https://invisible-island.net/archives/xterm/xterm-${xterm_version}.tgz",
                     "sha512": "${xterm_sha}"
                 }
             ]

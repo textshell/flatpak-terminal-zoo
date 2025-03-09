@@ -40,7 +40,7 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "ftp://ftp.invisible-island.net/xterm/xterm-330.tgz",
+                    "url": "https://invisible-island.net/archives/xterm/xterm-330.tgz",
                     "sha512": "3886745179ebabc10feea401444a153dc3f9e5f4c91da381870857fe21f514e0e975193af498b7c2b365602f833dd08e6c706e25cfc1e687d565125672136b62"
                 }
             ]
