@@ -31,7 +31,7 @@ if to_build:
 
 for name in sorted(to_build):
     with tempfile.TemporaryDirectory(dir='.') as tmp:
-        cmd = ['flatpak-builder', '--install', '--user', tmp, available[name] + '/' + name + '.json']
+        cmd = ['flatpak-builder', '--install-deps-from=flathub', '--install', '--user', tmp, available[name] + '/' + name + '.json']
         print('running: ', cmd)
         subprocess.run(cmd, check=True)
 
