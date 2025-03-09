@@ -1,0 +1,75 @@
+
+{
+    "app-id": "de.uchuujin.fp.termzoo.terminology1_13_0",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "47",
+    "sdk": "org.gnome.Sdk",
+    "command": "terminology",
+    "finish-args": ["--socket=x11", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
+    "modules": [
+        {
+            "name": "lua",
+            "buildsystem": "simple",
+            "build-commands": [
+                "make PREFIX=/app install"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/LuaJIT/LuaJIT/archive/refs/tags/v2.0.4.tar.gz",
+                    "sha512": "4357da3f7cd26e61c2a239fde7b7b29ebd6c3701c2f2a628f0041e371d5fd5f2c89202599c8fba333f070a5c019be333ddda26d44fdb1257daf9c87edcd019c0"
+                }
+            ]
+        },
+        {
+            "name": "efl",
+            "buildsystem": "meson",
+            "config-opts": [
+                    "--libdir=/app/lib",
+                    "-Dlua-interpreter=luajit", "-Dinput=false", "-Davahi=false", "-Dphysics=false",
+                    "-Decore-imf-loaders-disabler=ibus,scim",
+                    "-Devas-loaders-disabler=gst,pdf,ps,raw,rsvg,xcf,dds,generic,ico,jp2k,pmaps,psd,tga,tgv,tiff,wbmp,webp,json", "-Dbuild-tests=false", "-Dbuild-examples=false",
+                    "-Dsystemd=false"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.enlightenment.org/rel/libs/efl/efl-1.28.0.tar.xz",
+                    "sha512": "f88b005f981f09496baac0a1232c26433ad80acc5957a0a972a9b1335dda111d8defbfd7ed0ed6a7ead1528d58fef4f7ed53c60b87f33c625fb22f38683a890d"
+                },
+                {
+                    "type": "patch",
+                    "path": "efl-dbus.patch"
+                }
+            ]
+        },
+        {
+            "name": "terminology",
+            "buildsystem": "meson",
+            "config-opts": [
+                    "--pkg-config-path=/app/lib64/pkgconfig:/app/lib/pkgconfig"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.enlightenment.org/rel/apps/terminology/terminology-1.13.0.tar.xz",
+                    "sha512": "95e8f8bdf51e63b07f7bc5bf1aead98b9bd34c58e13df29d4726f1a81e560d071119035aa94218632e840bc5146c3bc475641934eebd6c7e37e00bed94451beb"
+                }
+            ]
+        },
+        {
+            "name": "scripts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D run-in-host /app/bin/run-in-host"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "../run-in-host"
+                }
+            ]
+        }
+
+    ]
+}
