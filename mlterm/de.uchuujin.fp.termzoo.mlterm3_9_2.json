@@ -1,0 +1,39 @@
+{
+    "app-id": "de.uchuujin.fp.termzoo.mlterm3_9_2",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "3.36",
+    "sdk": "org.gnome.Sdk",
+    "command": "mlterm",
+    "finish-args": ["--socket=x11", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
+    "modules": [
+        {
+            "name": "mlterm",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.sourceforge.net/mlterm/mlterm-3.9.2.tar.gz",
+                    "sha512": "3076dafbc98a01738d88acf0e0f52e15d33862b3e9b7a851a4496f1be07ee9e51103daf7842954bcae1f1ba62bd6645b0bd60af7f66ee98721bdf3786b9fcbaf"
+                },
+                {
+                    "type": "patch",
+                    "path": "mlterm-noroot.patch"
+                }
+            ]
+        },
+        {
+            "name": "scripts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D run-in-host /app/bin/run-in-host"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "../run-in-host"
+                }
+            ]
+        }
+
+    ]
+}
