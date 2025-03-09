@@ -1,0 +1,58 @@
+
+{
+    "app-id": "de.uchuujin.fp.termzoo.alacritty0_7_0",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "24.08",
+    "sdk": "org.freedesktop.Sdk",
+    "sdk-extensions": [
+        "org.freedesktop.Sdk.Extension.rust-stable"
+    ],
+    "command": "alacritty",
+    "finish-args": [
+        "--share=ipc",
+        "--socket=fallback-x11",
+        "--socket=wayland",
+        "--device=dri",
+        "--talk-name=org.freedesktop.Flatpak"
+    ],
+    "build-options": {
+        "append-path": "/usr/lib/sdk/rust-stable/bin"
+    },
+    "modules": [
+        {
+            "name": "alacritty",
+            "buildsystem": "simple",
+            "build-options": {
+                "env": {
+                    "CARGO_HOME": "/run/build/alacritty/cargo"
+                }
+            },
+            "build-commands": [
+                "cargo --offline fetch --manifest-path Cargo.toml --verbose",
+                "cargo --offline build --release --verbose",
+                "install -Dm755 ./target/release/alacritty -t /app/bin/"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/alacritty/alacritty/archive/refs/tags/v0.7.0.tar.gz",
+                    "sha256": "b9b7e96ebc1725962de628dac7d7bc0766ff9aea5f4c09f399e95823369d5882"
+                },
+                "generated-sources-0.7.0.json"
+            ]
+        },
+        {
+            "name": "scripts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D run-in-host /app/bin/run-in-host"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "../run-in-host"
+                }
+            ]
+        }
+    ]
+}
