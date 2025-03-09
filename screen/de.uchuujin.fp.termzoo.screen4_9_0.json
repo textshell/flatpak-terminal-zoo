@@ -1,0 +1,41 @@
+
+{
+    "app-id": "de.uchuujin.fp.termzoo.screen4_9_0",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "18.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "screen",
+    "finish-args": ["--socket=x11", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
+    "modules": [
+        {
+            "name": "screen",
+            "buildsystem": "autotools",
+            "build-options": {
+                "ldflags": "-Wl,--copy-dt-needed-entries -L/app/lib",
+                "make-args": [ "-j1" ],
+                "env": { "LIBS": "-ltinfo" }
+            },
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://mirrors.kernel.org/gnu/screen/screen-4.9.0.tar.gz",
+                    "sha512": "18bbb085d77ecd02cbc02fa88a945c39f06e0c6de4eeaa16b278440dac5c9896811abbe0838144e997cd344ae08b9530399fa8fcb31a65fc571ead90e8307f84"
+                }
+            ]
+        },
+        {
+            "name": "scripts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D run-in-host /app/bin/run-in-host"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "../run-in-host"
+                }
+            ]
+
+        }
+    ]
+}

@@ -1,0 +1,41 @@
+
+{
+    "app-id": "de.uchuujin.fp.termzoo.screen5_0_0",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "18.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "screen",
+    "finish-args": ["--socket=x11", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
+    "modules": [
+        {
+            "name": "screen",
+            "buildsystem": "autotools",
+            "build-options": {
+                "ldflags": "-Wl,--copy-dt-needed-entries -L/app/lib",
+                "make-args": [ "-j1" ],
+                "env": { "LIBS": "-ltinfo" }
+            },
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://mirrors.kernel.org/gnu/screen/screen-5.0.0.tar.gz",
+                    "sha512": "18a163313025c58950ec65fa83037ba1df0fa8e2346925593217fb0a6596f2f51914a4f0aec7f0e1c280d3d3ef964e7a886521f41f4b96f4ff08935be7f62117"
+                }
+            ]
+        },
+        {
+            "name": "scripts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D run-in-host /app/bin/run-in-host"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "../run-in-host"
+                }
+            ]
+
+        }
+    ]
+}
