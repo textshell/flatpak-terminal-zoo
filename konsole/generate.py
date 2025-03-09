@@ -78,6 +78,81 @@ T3 = Template(r"""
 }
 """)
 
+T4 = Template(r"""
+{
+    "app-id": "de.uchuujin.fp.termzoo.konsole${konsole_version_b}",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "5.15-21.08",
+    "sdk": "org.kde.Sdk",
+    "command": "konsole",
+    "finish-args": ["--socket=x11", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
+    "modules": [
+        {
+            "name": "konsole",
+            "buildsystem": "cmake",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.kde.org/${konsole_dldir}/${konsole_version}/src/konsole-${konsole_version}.tar.xz",
+                    "sha512": "${konsole_sha}"
+                }
+            ]
+        },
+        {
+            "name": "scripts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D run-in-host /app/bin/run-in-host"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "../run-in-host"
+                }
+            ]
+        }
+
+    ]
+}
+""")
+
+T5 = Template(r"""
+{
+    "app-id": "de.uchuujin.fp.termzoo.konsole${konsole_version_b}",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "6.8",
+    "sdk": "org.kde.Sdk",
+    "command": "konsole",
+    "finish-args": ["--socket=x11", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
+    "modules": [
+        {
+            "name": "konsole",
+            "buildsystem": "cmake",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.kde.org/${konsole_dldir}/${konsole_version}/src/konsole-${konsole_version}.tar.xz",
+                    "sha512": "${konsole_sha}"
+                }
+            ]
+        },
+        {
+            "name": "scripts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D run-in-host /app/bin/run-in-host"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "../run-in-host"
+                }
+            ]
+        }
+
+    ]
+}
+""")
 
 T1 = Template(r"""
 {
@@ -106,7 +181,7 @@ T1 = Template(r"""
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.kde.org/${konsole_dldir}/applications/${konsole_version}/src/konsole-${konsole_version}.tar.xz",
+                    "url": "https://download.kde.org/${konsole_dldir}/${konsole_version}/src/konsole-${konsole_version}.tar.xz",
                     "sha512": "${konsole_sha}"
                 }
             ]
@@ -190,6 +265,15 @@ konsole_versions = (
     ('21.08.3', T3, 'stable/release-service', '9a01678b609ca0a9f74327bb315957c2d395f80d4da14442ee0b58ba3eef54c5c4ac49b5c4d6a8ef5914502395e8d0b730472b93dea7eaa7b69cc526d2feb6c5'),
     ('21.12.0', T3, 'stable/release-service', '67d0671e78bc8adbe52ed5afed6c2ba0a5e6f28f1f261bb02c5b0e7da876a5116dac4dea89bbb66e6ccce20464723cdd6871916baac3c9ef45c2bb36891c129a'),
     ('21.12.1', T3, 'stable/release-service', '26963b05937109615fb0963ed7a9367d95d4392b0fe0dc36c140b3fb71a092ef7380bc66000e6a122c571a57590d92151bdc29fbc9ce53cd7793392c7776fb77'),
+    ('22.04.3', T4, 'Attic/release-service', '05728efc051ae76b395c7ece1599e654ce3bdae0c8b43d7f8e34c76f57041f7722e161147c4a5699377b764aa8b3799421d5c735967216c5420b6f92330c1338'),
+    ('22.08.3', T4, 'Attic/release-service', '5f452cea9bf5cc609c89968eba3177b5a89103c7f160d1d41643140af98f95b74b1b4efcdea4119afbd745800922b66b7ab96a077d1c61096802e6e135d81bce'),
+    ('22.12.3', T4, 'Attic/release-service', '8dd29a2b8dfdb62a096e924de617c0a028dfc3c018035140c50a63d564b8282fd702d4d8a265bd28f6b55bca5068b37dbaf3b047c2ba56eb43cb28887ac9c4f0'),
+    ('23.04.3', T4, 'Attic/release-service', '9d332efe21dee41c6f34b91f373f4ac15798ad977e429f5f57995a619a9ebcad9e506c21ee811a1ccb595509cfd15a33cef721d01573b1245f2798a88d93c04b'),
+    ('23.08.5', T4, 'Attic/release-service', 'dd227f0446b623839f984cfa2f00b94e16c929f35b4714e791a11baf90907ac87ed469f50980a07e6528fbcc1654192d2504676b73d7856b6389077a4ef01f88'),
+    ('24.02.2', T5, 'Attic/release-service', 'de3154d198fb3e7bfd91e06faeafafcf75478c85af46443c04bd98e5a267bd0eea28e162cd7827858cb9c17880bd7f947983bf81e9ba8aa6647820691cf42042'),
+    ('24.05.2', T5, 'Attic/release-service', '47b2fdfc4b79b1e8cef72aed9d77858347c0c89e7b0cd4106a2f0d362ea72a2d54b79385deb8525654a5b0da0fb19c8e1db370618a6f0ae2d8e1aab41e7261f3'),
+    ('24.08.3', T5, 'stable/release-service', '39f012c233517b2185c440b03548502e044b0a6561587e40227ef339637e2fa6b8a635873da028e9356dc99fe2cc76d5dc8d957189f2a4b5eb561543c2ab5cba'),
+    ('24.12.3', T5, 'stable/release-service', '11f24bfde9aa1bc8b26fd3faa5d9c49cc493ca24150236586e64177e003be6eac2226868b6bed283c4a02e5e5a5177b64dc27a1eb22acf524d403162968a17cc'),
 )
 
 

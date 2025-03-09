@@ -25,7 +25,7 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.kde.org/Attic/applications/14.12.3/src/konsole-14.12.3.tar.xz",
+                    "url": "https://download.kde.org/Attic/14.12.3/src/konsole-14.12.3.tar.xz",
                     "sha512": "382710cee174c33c2db405b6c0ff399df657a5c9c7ad448899ba5176ed354a500f95e555058a5cd484b464dcb3260b28ce6665c1daaf6532dd66d9f4d273edff"
                 }
             ]

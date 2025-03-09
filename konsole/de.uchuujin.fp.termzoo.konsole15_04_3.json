@@ -25,7 +25,7 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.kde.org/Attic/applications/15.04.3/src/konsole-15.04.3.tar.xz",
+                    "url": "https://download.kde.org/Attic/15.04.3/src/konsole-15.04.3.tar.xz",
                     "sha512": "71a4381e89821be3aa287d9de13533f54ef94ca7d5ef11bec190d338d9e35226fc042a7dde998fc317cf707c3d905b59bc27d373b7cc43caf018dc755ff4fb5a"
                 }
             ]

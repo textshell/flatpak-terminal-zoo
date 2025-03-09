@@ -25,7 +25,7 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.kde.org/Attic/applications/16.04.3/src/konsole-16.04.3.tar.xz",
+                    "url": "https://download.kde.org/Attic/16.04.3/src/konsole-16.04.3.tar.xz",
                     "sha512": "2658791533e8ea83a4fdd2cacbcddbde7a6dc17e6302b54b5341c1f5c3e83557980ff90fc3417ef4e5d6d54a9979d58581cef6fa1037db8abb95662052fd706c"
                 }
             ]
