@@ -1,0 +1,56 @@
+
+{
+    "app-id": "de.uchuujin.fp.termzoo.terminus_xtermjs1_0_222",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "47",
+    "sdk": "org.gnome.Platform",
+    "base": "org.electronjs.Electron2.BaseApp",
+    "base-version": "19.08",
+    "command": "tabby",
+    "finish-args": [ "--socket=x11", "--socket=wayland", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
+    "modules": [
+        {
+            "name": "terminus",
+            "buildsystem": "simple",
+            "build-commands": [
+                "sed -i -e 's%/etc/shells%/app/shells%' resources/builtin-plugins/tabby-electron/dist/index.js",
+                "sed -i -e 's%/etc/shells%/app/shells%' resources/builtin-plugins/tabby-electron/src/shells/posix.ts",
+                "mkdir -p /app/bin/",
+                "cp config-tabby.yaml /app/",
+                "cp -r . /app/bin/",
+                "mv /app/bin/tabby /app/bin/tabby.bin",
+                "cp wrapper-tabby.sh /app/bin/tabby",
+                "chmod a+x /app/bin/tabby",
+                "echo /bin/bash > /app/shells"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/Eugeny/tabby/releases/download/v1.0.222/tabby-1.0.222-linux-x64.tar.gz",
+                    "sha512": "2552f276fee51886a076a55b1f813a1cc063fdce6a281983decd27bca0079a9156e01d40edf18927a0727f433e61c41dcefc7a274cdb7e35200f8c05f0cf21d6"
+                },
+                {
+                    "type": "file",
+                    "path": "wrapper-tabby.sh"
+                },
+                {
+                    "type": "file",
+                    "path": "config-tabby.yaml"
+                }
+            ]
+        },
+        {
+            "name": "scripts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D run-in-host /app/bin/run-in-host"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "../run-in-host"
+                }
+            ]
+        }
+    ]
+}

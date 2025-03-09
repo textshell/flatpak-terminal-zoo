@@ -1,0 +1,59 @@
+version: 7
+profiles:
+  - icon: fas fa-terminal
+    options:
+      command: /bin/bash
+      env: {}
+    name: anyterm
+    type: local
+    id: local:custom:anyterm:d578e26e-6710-4d63-94b0-0d71d6a755d7
+groups: []
+configSync:
+  parts: {}
+hotkeys:
+  toggle-window: []
+terminal:
+  searchOptions: {}
+  colorScheme:
+    name: Tabby Default
+    foreground: '#cacaca'
+    background: '#171717'
+    cursor: '#bbbbbb'
+    colors:
+      - '#000000'
+      - '#ff615a'
+      - '#b1e969'
+      - '#ebd99c'
+      - '#5da9f6'
+      - '#e86aff'
+      - '#82fff7'
+      - '#dedacf'
+      - '#313131'
+      - '#f58c80'
+      - '#ddf88f'
+      - '#eee5b2'
+      - '#a5c7ff'
+      - '#ddaaff'
+      - '#b7fff9'
+      - '#ffffff'
+  profile: local:custom:anyterm:d578e26e-6710-4d63-94b0-0d71d6a755d7
+ssh: {}
+clickableLinks: {}
+accessibility: {}
+appearance:
+  frame: native
+hacks: {}
+providerBlacklist: []
+commandBlacklist: []
+enableAnalytics: false
+enableAutomaticUpdates: false
+language: en-US
+enableWelcomeTab: false
+profileDefaults:
+  local:
+    type: local
+    options:
+      env: {}
+      command: /bin/bash
+profileBlacklist: []
+recoverTabs: false
