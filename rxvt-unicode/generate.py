@@ -64,6 +64,73 @@ CPP11_TYPE_PATCH = """,
                 }
 """
 
+
+URXVT_TEMPLATE2 = Template(r"""
+{
+    "app-id": "de.uchuujin.fp.termzoo.urxvt${urxvt_version}",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "18.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "urxvt",
+    "finish-args": ["--socket=x11", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
+    "modules": [
+        {
+            "name": "xmu",
+            "buildsystem": "autotools",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.x.org/releases/individual/lib/libXmu-1.1.2.tar.bz2",
+                    "sha512": "eba4e3d10f7d75ba8464881fb69f295a89774a4b37793197d75f3312e3a342b2df8b7e13e3f5c887962704329b5347ff2f3395e229af9dadf46a93b1e8613cfc"
+                }
+            ]
+        },
+        {
+            "name": "libptytty",
+            "buildsystem": "cmake",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://dist.schmorp.de/libptytty/libptytty-2.0.tar.gz",
+                    "sha512": "9cca5fddbcc4025c2bbe043e3367ac902d0024a34301258dafcf0de70935c055279d88227168d112d0e4c0dc37f1f49e1ea587bd6bddf0b9d92400657bc7be08"
+                }
+            ]
+        },
+        {
+            "name": "rxvt-unicode",
+            "buildsystem": "simple",
+            "build-commands": [
+                "./configure LDFLAGS='-Wl,--copy-dt-needed-entries -L/app/lib' CPPFLAGS='-fpermissive -I/app/include' --with-res-name=urxvtTZ --with-res-class=URxvtTZ --prefix=/app --enable-256-color --enable-combining --enable-fading --enable-font-styles --enable-iso14755 --enable-keepscrolling --enable-lastlog --enable-mousewheel --enable-next-scroll --enable-pixbuf --enable-pointer-blank --enable-rxvt-scroll --enable-selectionscrolling --enable-slipwheeling --enable-smart-resize --enable-transparency --enable-unicode3 --enable-warnings --enable-xft --enable-xim --enable-xterm-scroll --with-term=rxvt-unicode-256color --disable-perl",
+                "make",
+                "make install"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://dist.schmorp.de/rxvt-unicode/Attic/${urxvt_file}",
+                    "sha512": "${urxvt_sha}"
+                }${urxvt_patch}
+            ]
+        },
+        {
+            "name": "scripts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D run-in-host /app/bin/run-in-host"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "../run-in-host"
+                }
+            ]
+        }
+
+    ]
+}
+""")
+
+
 urxvt_versions = (
     ('9_0',  'rxvt-unicode-9.0.tar.bz2',  '', 'bf556b1572056a2e531ba0d5789f7ecc1de8ea7657b13ec5b699e894bf7dd8e27b5341635a1bbc8ee287b170b8af943c1cce257bfd4412e6ed44449d29a853ab'),
     ('9_01', 'rxvt-unicode-9.01.tar.bz2', '', 'f93da5d4ef15319c3b3f19acbc5d9e078978496ca56659d983eedfaa88bb93d4030ca9553096c270fcedae04b00fe6c1641af7b4c9859deca8eaf9764092de25'),
@@ -88,13 +155,24 @@ urxvt_versions = (
     ('9_20', 'rxvt-unicode-9.20.tar.bz2', CPP11_TYPE_PATCH, '39e1574f7b7034c07ab2e836bb77e0fb0536830df873cc54e6c7583be5e20d36dea3fe0fc889283f163530c77534a3a55de227ee0a8f03564d0f030e60461ff9'),
     ('9_21', 'rxvt-unicode-9.21.tar.bz2', '', 'd50adf6b1e6ae3b13492b4f40455d3a56bb174a7c6db4d4525a1277736994adfb74a2cd1e7d3e8a8cfdc4509a9ae32c05a627829e295dc1bd4a5ba7cc2f80776'),
     ('9_22', 'rxvt-unicode-9.22.tar.bz2', '', 'b39f1b2cbe6dd3fbd2a0ad6a9d391a2b6f49d7c5e67bc65fe44a9c86937f8db379572c67564c6e21ff6e09b447cdfd4e540544e486179e94da0e0db679c04dd9'),
+# does not build, missing ev_iouring.c
+#    ('9_25', 'rxvt-unicode-9.25.tar.bz2', '', '5df3293c9b091af0577ef967285b8b3c072b0c64338b686be8e762824b163e45f7c5653f5482a4af942ca36aefba2d690831c414a046602862c6b86ee59509fe'),
+    ('9_26', 'rxvt-unicode-9.26.tar.bz2', '', '35560b57730e17c9542ea4a615fd86ce703c4e6421323e8fe1570007737a880fde90d17943e5af9e170be4111b9769f4aa7e57efca5428421fdc1c299112f8e0'),
+    ('9_29', 'rxvt-unicode-9.29.tar.bz2', '2', '8af7f1e8c3f2c6bf5fa131b6ef61e836ac7c83ac2b31ccb183d7481191f55a8e87e7f9f6d93f2ae1855ca339f71b2d682471ee41ef706b7ccc21c6c8ea4b44f9'),
+    ('9_30', 'rxvt-unicode-9.30.tar.bz2', '2', '048d5f635a61bc1a739d5cbc09e7a9f77cee18c81df468ce1ff0a62866ced06fc4ec258bb015d2484a7e7bad2339f0bdd79bd824d649c2553a80bdef9f199e99'),
+    ('9_31', 'rxvt-unicode-9.31.tar.bz2', '2', '4d14ecbbb62de1b1c717277f5aae5cfb536e11392f2d4b82c884c1713f437fce8e9dd69a328fa353a55d068d8ee4121a31900f45191acec172d5dc76652b6255'),
 )
 
 
 for urxvt_version, urxvt_file, urxvt_patch, urxvt_sha in urxvt_versions:
     with open('de.uchuujin.fp.termzoo.urxvt{}.json'.format(urxvt_version), "w") as f:
-        f.write(URXVT_TEMPLATE.substitute(urxvt_version=urxvt_version, 
-                urxvt_file=urxvt_file, urxvt_patch=urxvt_patch,
-                urxvt_sha=urxvt_sha))
+        if urxvt_patch == "2":
+            f.write(URXVT_TEMPLATE2.substitute(urxvt_version=urxvt_version, 
+                    urxvt_file=urxvt_file, urxvt_patch="",
+                    urxvt_sha=urxvt_sha))
+        else:
+            f.write(URXVT_TEMPLATE.substitute(urxvt_version=urxvt_version, 
+                    urxvt_file=urxvt_file, urxvt_patch=urxvt_patch,
+                    urxvt_sha=urxvt_sha))
 
 
