@@ -1,0 +1,48 @@
+
+{
+    "app-id": "de.uchuujin.fp.termzoo.kitty0_24_1",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "40",
+    "sdk": "org.gnome.Sdk",
+    "command": "kitty",
+    "finish-args": [ "--socket=x11", "--socket=wayland", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
+    "modules": [
+        {
+            "name": "librsync",
+            "buildsystem": "cmake",
+            "sources": [{
+                "type": "archive",
+                "url": "https://github.com/librsync/librsync/releases/download/v2.3.4/librsync-2.3.4.tar.gz",
+                "sha256": "a0dedf9fff66d8e29e7c25d23c1f42beda2089fb4eac1b36e6acd8a29edfbd1f"
+            }]
+        },
+        {
+            "name": "kitty",
+            "buildsystem": "simple",
+            "build-commands": [
+                "python3 setup.py linux-package",
+                "cp -r linux-package/* /app"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/kovidgoyal/kitty/releases/download/v0.24.1/kitty-0.24.1.tar.xz",
+                    "sha512": "e590a3abd4ed38ce956ee1e1b9d3679150c83b80df5ed9daf9773d7a278f63dc8a3a563058906d322f9186bece7d479036a502864fd80f45593c4970c056f389"
+                }
+            ]
+        },
+        {
+            "name": "scripts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D run-in-host /app/bin/run-in-host"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "../run-in-host"
+                }
+            ]
+        }
+    ]
+}

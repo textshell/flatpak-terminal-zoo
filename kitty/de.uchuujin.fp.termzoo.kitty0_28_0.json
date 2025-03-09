@@ -1,0 +1,55 @@
+
+{
+    "app-id": "de.uchuujin.fp.termzoo.kitty0_28_0",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "42",
+    "sdk": "org.gnome.Sdk",
+    "sdk-extensions": [
+        "org.freedesktop.Sdk.Extension.golang"
+    ],
+    "command": "kitty",
+    "finish-args": [ "--socket=x11", "--socket=wayland", "--device=dri", "--talk-name=org.freedesktop.Flatpak"],
+    "modules": [
+        {
+            "name": "librsync",
+            "buildsystem": "cmake",
+            "sources": [{
+                "type": "archive",
+                "url": "https://github.com/librsync/librsync/releases/download/v2.3.4/librsync-2.3.4.tar.gz",
+                "sha256": "a0dedf9fff66d8e29e7c25d23c1f42beda2089fb4eac1b36e6acd8a29edfbd1f"
+            }]
+        },
+        {
+            "name": "kitty",
+            "buildsystem": "simple",
+            "build-options": {
+                "append-path": "/usr/lib/sdk/golang/bin",
+                "build-args": ["--share=network"]
+            },
+            "build-commands": [
+                "python3 setup.py linux-package",
+                "cp -r linux-package/* /app"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/kovidgoyal/kitty/releases/download/v0.28.0/kitty-0.28.0.tar.xz",
+                    "sha512": "d133dab019c67367e90cc2e2dce7e614a65400b079cdcfa854f2e1cb7399af7b1ba0f3ef4d30867ae588c9919a772c03ee12457b6dc5922f58c034a6da927127"
+                }
+            ]
+        },
+        {
+            "name": "scripts",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D run-in-host /app/bin/run-in-host"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "../run-in-host"
+                }
+            ]
+        }
+    ]
+}
