@@ -23,6 +23,8 @@ args_term = []
 args_cmd = []
 
 args = sys.argv[1:]
+script_path = os.path.realpath(__file__)
+
 
 if '--' in args:
     args_term = args[:args.index('--')]
@@ -48,23 +50,23 @@ if any((term.startswith('de.uchuujin.fp.termzoo.' + x) for x in list_of_terminal
     prefix = ['xterm', '-e']
     
 if any((term.startswith('de.uchuujin.fp.termzoo.' + x) for x in list_of_terminals_that_use_dash_c)):
-    inv_args = [*prefix, 'flatpak', 'run', term, '-c', 'run-in-host' + ' ' + __file__ + ' +++anyterm+++ ' + encoded]
+    inv_args = [*prefix, 'flatpak', 'run', term, '-c', 'run-in-host' + ' ' + script_path + ' +++anyterm+++ ' + encoded]
     #print(inv_args)
     subprocess.check_call(inv_args)
 elif any((term.startswith('de.uchuujin.fp.termzoo.' + x) for x in list_of_terminals_that_use_no_dash)):
-    inv_args = [*prefix, 'flatpak', 'run', term, 'run-in-host', __file__, '+++anyterm+++', encoded]
+    inv_args = [*prefix, 'flatpak', 'run', term, 'run-in-host', script_path, '+++anyterm+++', encoded]
     #print(inv_args)
     subprocess.check_call(inv_args)
 elif term.startswith('de.uchuujin.fp.termzoo.tmux'):
-    inv_args = [*prefix, 'flatpak', 'run', term, 'new-session', 'run-in-host' + ' ' + __file__ + ' +++anyterm+++ ' + encoded]
+    inv_args = [*prefix, 'flatpak', 'run', term, 'new-session', 'run-in-host' + ' ' + script_path + ' +++anyterm+++ ' + encoded]
     #print(inv_args)
     subprocess.check_call(inv_args)
 elif term.startswith('de.uchuujin.fp.termzoo.mosh'):
-    inv_args = [*prefix, 'flatpak', 'run', term, '--local', '--', '127.0.0.1', 'run-in-host', __file__, '+++anyterm+++', encoded]
+    inv_args = [*prefix, 'flatpak', 'run', term, '--local', '--', '127.0.0.1', 'run-in-host', script_path, '+++anyterm+++', encoded]
     #print(inv_args)
     subprocess.check_call(inv_args)
 else:
-    inv_args = [*prefix, 'flatpak', 'run', term, '-e', 'run-in-host', __file__, '+++anyterm+++', encoded]
+    inv_args = [*prefix, 'flatpak', 'run', term, '-e', 'run-in-host', script_path, '+++anyterm+++', encoded]
     #print(inv_args)
     subprocess.check_call(inv_args)
 
